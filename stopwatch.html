@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<style>
+		body 
+		{
+			background-color: powderblue;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+		#container
+		{
+			color: black solid;
+		}
+		.digit
+		{
+			font-size: 150px;
+			font-weight: bold;
+		}
+		.text{
+			font-size: 40px;
+			font-weight: bold;
+		}
+
+	</style>
+</head>
+<body>
+<div id="container">
+	<div id="time">
+		<span id="hr" class="digit">00</span>
+		<span class="text">Hr</span>
+		<span id="min" class="digit">00</span>
+		<span class="text">Min</span>
+        <span id="sec" class="digit">00</span>
+        <span class="text">Sec</span>
+	</div>
+	<div>
+		<center>
+	<button class="btn" id="start" onclick="start()" style="background: #00ff40"><h1>Start</h1></button>
+	<button class="btn" id="stop" onclick="stop()" style="background: #8000ff"><h1>Stop</h1></button>
+	<button class="btn" id="reset" onclick="reset()" style="background: #ff4000"><h1>Reset</h1></button>
+	</center>
+	</div>
+</div>
+</body>
+<script>
+	var h=0;
+	var m=0;
+	var s=0;
+	var inter;
+	 
+	 const setTime=()=>
+	{
+		s++;
+		document.getElementById('sec').innerHTML=s;
+
+       if(s==60)
+     {
+       	s=0;
+       	m++;
+       	document.getElementById('min').innerHTML=m;
+       
+       if(m==60)
+       {
+       	m=0;
+       	h++;
+       	document.getElementById('hr').innerHTML=h;
+       }
+    }
+   }
+    
+	function start() 
+	{
+		inter=setInterval(setTime,1000);
+	}
+	
+	function stop()
+	{
+       clearInterval(inter);
+	}
+	
+function reset()
+	{
+       //stop();
+       document.getElementById('sec').innerHTML=00;
+       document.getElementById('min').innerHTML=00;
+       document.getElementById('hr').innerHTML=00;
+       h=00;
+       m=00;
+       s=00;
+
+	}
+	
+	
+</script>
+</html>
